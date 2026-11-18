@@ -148,3 +148,7 @@ a.brand:hover strong { text-decoration:underline; text-underline-offset:4px }
 #div-feedback{min-height:28px;text-align:center;color:var(--gold);margin:13px 0}
 #div-summary{font-size:20px;font-weight:800;margin-top:12px}
 @media(max-width:650px){.division-trail{grid-template-columns:1fr}.division-trail .stage{min-height:185px}}
+
+.cloud-status{display:flex;align-items:center;justify-content:space-between;gap:10px;flex-wrap:wrap;border:1px solid var(--line);border-radius:14px;padding:10px 14px;background:#142a36;margin:0 0 15px}
+.cloud-status p{font-size:14px;color:var(--mint)}
+.cloud-status button{font-size:13px}

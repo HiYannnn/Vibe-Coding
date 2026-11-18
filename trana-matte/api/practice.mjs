@@ -32,12 +32,15 @@ export default async function handler(req, res) {
         [hash, record.player.trim()]
       );
       const result = await client.query(
-        'INSERT INTO matte_practice_runs(id,player_id,operation,activity,score,total,answered,duration_ms,passed,finished_at) VALUES($1,$2,$3,$4,$5,$6,$7,$8,$9,$10) ON CONFLICT(id) DO NOTHING',
+        'INSERT INTO matte_practice_runs(id,player_id,operation,activity,score,total,answered,duration_ms,passed,finished_at) VALUES($1,$2,$3,$4,$5,$6,$7,$8,$9,$10) ON CONFLICT DO NOTHING',
         [record.id, player.rows[0].id, record.operation, record.activity, record.score, record.total,
           record.answered, record.ms, record.passed, record.finished]
       );
       if (!result.rowCount) {
-        const existing = await client.query('SELECT 1 FROM matte_practice_runs WHERE id=$1 AND player_id=$2', [record.id, player.rows[0].id]);
+        const existing = await client.query(
+          'SELECT 1 FROM matte_practice_runs WHERE player_id=$1 AND (id=$2 OR (operation=$3 AND activity=$4 AND finished_at=$5))',
+          [player.rows[0].id, record.id, record.operation, record.activity, record.finished]
+        );
         if (!existing.rowCount) {
           await client.query('ROLLBACK');
           return res.status(409).json({ error: 'Result conflict' });
