@@ -33,7 +33,7 @@ Open http://127.0.0.1:3035. Neon writes connection settings to the ignored
 Set `DATABASE_URL` in the project's Production environment variables using
 the pooled connection string from Neon. Keep Root Directory set to
 `trana-matte`, Framework Preset to Other, and the static Output Directory
-at the project root. Deploy after setting the environment variable.
+as `public` (configured in `vercel.json`). Deploy after setting the environment variable.
 
 The SQL migration is in `migrations/001-practice.sql`. Apply migrations
 explicitly before deploying code that depends on them.
