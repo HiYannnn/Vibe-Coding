@@ -1,0 +1,7 @@
+# Träna Matte
+
+I built Träna Matte to help my children practise the basic maths skills they’re expected to learn at school. I wanted them to be able to practise on their own and have a little fun, while giving me a clearer picture of what they’ve mastered and where they could use more practice.
+
+The game includes a multiplication space adventure, timed challenges, and maths crosswords at three difficulty levels. Children can play on a phone, tablet, or computer. Levels, stars, and medals give them something to work towards, and the practice history shows what they worked on, how they did, and how long it took.
+
+For now, practice history is saved in each browser. I’d like to add more arithmetic exercises and a parent report that brings together results from different devices.
