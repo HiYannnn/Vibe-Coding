@@ -249,3 +249,39 @@ const crosswordCopy = {
     square:(row,col)=>`空格，第 ${row} 行，第 ${col} 列`
   }
 };
+
+const leaderboardCopy = {
+  sv:{
+    rankEyebrow:'Stjärnornas liga',rankTitle:'Topplista',rankIntro:'Varje övning tar dig längre. Dina poäng samlas för alltid.',
+    rankAll:'Alla upptäckare',rankRefresh:'Uppdatera',rankPosition:'Plats',rankPoints:'Poäng',rankRounds:'Omgångar',
+    rankRules:'Så får du poäng',rankRuleAnswers:'Multiplikation: 1 poäng per rätt svar.',
+    rankRuleWorld:'Första gången du klarar en värld: 10 bonuspoäng.',
+    rankRuleBonus:'Klarad Blixtbana: 20 bonuspoäng varje gång.',
+    rankRuleCrossword:'Löst mattekorsord: 5 poäng på lätt, 10 på medel, 15 på svår.',
+    rankLoading:'Hämtar stjärnpoäng…',rankEmpty:'Bli den första upptäckaren! Slutför en övning för att ta plats här.',
+    rankError:'Topplistan kunde inte hämtas. Försök uppdatera igen.',rankLifetime:'Totala poäng',
+    rankPlay:'Börja ett äventyr →'
+  },
+  en:{
+    rankEyebrow:'League of stars',rankTitle:'Leaderboard',rankIntro:'Every practice takes you further. Your points keep adding up.',
+    rankAll:'All explorers',rankRefresh:'Refresh',rankPosition:'Rank',rankPoints:'Points',rankRounds:'Rounds',
+    rankRules:'How to earn points',rankRuleAnswers:'Multiplication: 1 point per correct answer.',
+    rankRuleWorld:'First clear of each world: 10 bonus points.',
+    rankRuleBonus:'Clear Lightning Run: 20 bonus points every time.',
+    rankRuleCrossword:'Solved crossword: 5 points for easy, 10 for medium, 15 for hard.',
+    rankLoading:'Collecting star points…',rankEmpty:'Be the first explorer! Complete a practice round to appear here.',
+    rankError:'Could not load the leaderboard. Try refreshing.',rankLifetime:'Lifetime points',
+    rankPlay:'Start an adventure →'
+  },
+  'zh-CN':{
+    rankEyebrow:'星际探险联盟',rankTitle:'星光排行榜',rankIntro:'每一次练习，都让你走得更远。总积分持续累积。',
+    rankAll:'全体探险家',rankRefresh:'刷新',rankPosition:'名次',rankPoints:'积分',rankRounds:'练习次数',
+    rankRules:'如何获得积分',rankRuleAnswers:'乘法练习：每答对一题得 1 分。',
+    rankRuleWorld:'每个星球首次通关，额外获得 10 分。',
+    rankRuleBonus:'闪电赛道每次挑战成功，额外获得 20 分。',
+    rankRuleCrossword:'数学填字完成：简单 5 分、进阶 10 分、困难 15 分。',
+    rankLoading:'正在收集星光积分…',rankEmpty:'成为第一位探险家！完成一次练习，就能登上排行榜。',
+    rankError:'暂时无法加载排行榜，请点击刷新重试。',rankLifetime:'累计总积分',
+    rankPlay:'开启冒险 →'
+  }
+};

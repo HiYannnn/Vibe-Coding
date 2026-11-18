@@ -2,6 +2,7 @@ import http from 'node:http';
 import { readFile } from 'node:fs/promises';
 import path from 'node:path';
 import handler from '../api/practice.mjs';
+import leaderboard from '../api/leaderboard.mjs';
 
 const root = process.cwd();
 const types = { '.html':'text/html', '.js':'text/javascript', '.css':'text/css', '.jpg':'image/jpeg' };
@@ -9,6 +10,7 @@ const server = http.createServer(async (req,res) => {
   res.status = code => { res.statusCode = code; return res; };
   res.json = value => { res.setHeader('Content-Type','application/json'); res.end(JSON.stringify(value)); };
   const url = new URL(req.url,'http://localhost');
+  if (url.pathname === '/api/leaderboard') return leaderboard(req,res);
   if (url.pathname === '/api/practice') {
     let body = '';
     for await (const chunk of req) {

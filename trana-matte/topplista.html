@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="sv">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#101c2b"><title>Topplista · Träna Matte</title>
+<link rel="stylesheet" href="style.css">
+<script defer src="translations.js"></script><script defer src="leaderboard.js"></script>
+</head>
+<body>
+<div class="shell leaderboard-shell">
+<header>
+<a class="brand" href="./"><span class="mark" aria-hidden="true">✦</span><strong data-copy="portalTitle">Träna Matte</strong></a>
+<select id="language" aria-label="Språk"><option value="sv">Svenska</option><option value="en">English</option><option value="zh-CN">中文</option></select>
+</header>
+<main>
+<section class="rank-hero">
+<div class="rank-constellation" aria-hidden="true">✦ · ✧ · ✦</div>
+<p class="eyebrow" data-copy="rankEyebrow">Stjärnornas liga</p>
+<h1 data-copy="rankTitle">Topplista</h1>
+<p class="muted" data-copy="rankIntro">Varje övning tar dig längre. Dina poäng samlas för alltid.</p>
+</section>
+<p id="rank-status" class="rank-status" role="status"></p>
+<section id="podium" class="podium" aria-label="Top 3"></section>
+<section class="panel ranking-panel">
+<div class="row"><h2 data-copy="rankAll">Alla upptäckare</h2><button class="outline" id="rank-refresh" data-copy="rankRefresh">Uppdatera</button></div>
+<div class="table-wrap"><table><thead><tr><th data-copy="rankPosition">Plats</th><th data-copy="name">Smeknamn</th><th data-copy="rankPoints">Poäng</th><th data-copy="rankRounds">Omgångar</th></tr></thead><tbody id="rank-rows"></tbody></table></div>
+</section>
+<details class="panel rank-rules"><summary data-copy="rankRules">Så får du poäng</summary><ul>
+<li data-copy="rankRuleAnswers"></li><li data-copy="rankRuleWorld"></li><li data-copy="rankRuleBonus"></li><li data-copy="rankRuleCrossword"></li>
+</ul></details>
+</main>
+</div>
+</body></html>

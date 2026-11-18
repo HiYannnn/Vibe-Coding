@@ -12,7 +12,7 @@ try {
 }
 
 function renderLanguage() {
-  const copy = { ...translations[language], ...adventureCopy[language], ...portalCopy[language], ...crosswordCopy[language] };
+  const copy = { ...translations[language], ...adventureCopy[language], ...portalCopy[language], ...crosswordCopy[language], ...leaderboardCopy[language] };
   document.documentElement.lang = language;
   document.title = copy.portalTitle;
   languagePicker.value = language;

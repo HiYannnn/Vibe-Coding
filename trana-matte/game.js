@@ -159,7 +159,7 @@ function renderRecords() {
 }
 
 function applyLanguage() {
-  copy = { ...translations[language], ...adventureCopy[language], ...portalCopy[language], ...crosswordCopy[language] };
+  copy = { ...translations[language], ...adventureCopy[language], ...portalCopy[language], ...crosswordCopy[language], ...leaderboardCopy[language] };
   document.documentElement.lang = language;
   document.title = copy.adventureTitle;
   languagePicker.value = language;
