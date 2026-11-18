@@ -198,12 +198,14 @@ get('puzzle').addEventListener('submit', event => {
   round.status = 'solved';
   get('check').disabled = true;
   for (const input of round.inputs.values()) input.readOnly = true;
+  const total = round.inputs.size;
+  const record = { player:round.name, operation:'crossword', difficulty:round.level, score:total, total,
+    answered:total, passed:true, ms, finished:new Date().toISOString() };
+  window.MatteCloud?.save(record);
   try {
     const records = readHistory();
     const newMedal = !earnedMedals(records, round.name).has(round.level);
-    const total = round.inputs.size;
-    records.unshift({ player:round.name, operation:'crossword', difficulty:round.level, score:total, total,
-      answered:total, passed:true, ms, finished:new Date().toISOString() });
+    records.unshift(record);
     localStorage.setItem(historyKey, JSON.stringify(records));
     round.saved = true;
     round.newMedal = newMedal;

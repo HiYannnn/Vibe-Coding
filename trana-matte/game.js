@@ -349,6 +349,7 @@ function finish(reason) {
     records.unshift(record);
     game.saved = false;
   }
+  window.MatteCloud?.save(record);
   renderRecords();
   renderMap();
   renderResult();
