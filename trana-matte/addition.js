@@ -3,6 +3,8 @@ const get=id=>document.getElementById(id);
 const historyKey='kalana-multiplication-history-v1';
 const languageKey='kalana-multiplication-language-v1';
 const limits={2:90,3:150,4:240};
+const isSubtraction=document.body.dataset.operation === 'subtraction';
+const operation=isSubtraction?'subtraction':'addition';
 let language='sv',copy,round,ticker;
 try {const saved=localStorage.getItem(languageKey);if(Object.hasOwn(additionCopy,saved))language=saved;} catch {}
 const random=(min,max)=>min+Math.floor(Math.random()*(max-min+1));
@@ -10,18 +12,23 @@ function questions(digits) {
   const min=10**(digits-1),max=10**digits-1;
   const seen=new Set(),result=[];
   while(result.length<10) {
-    const a=random(min,max),b=random(min,max);
+    const first=random(min,max),second=random(min,max);
+    const a=isSubtraction?Math.max(first,second):first;
+    const b=isSubtraction?Math.min(first,second):second;
     const key=[a,b].sort((x,y)=>x-y).join('-');
-    const carries=String(a).split('').reverse().some((n,index)=>Number(n)+Number(String(b).at(-1-index))>=10);
-    if(seen.has(key) || (result.length%2===0 && !carries))continue;
-    seen.add(key);result.push({a,b,answer:a+b});
+    const regrouping=String(a).split('').reverse().some((n,index)=>{
+      const other=Number(String(b).at(-1-index));
+      return isSubtraction?Number(n)<other:Number(n)+other>=10;
+    });
+    if(seen.has(key) || (result.length%2===0 && !regrouping))continue;
+    seen.add(key);result.push({a,b,answer:isSubtraction?a-b:a+b});
   }
   return result;
 }
 function clock(ms) {const s=Math.max(0,Math.ceil(ms/1000));return Math.floor(s/60)+':'+String(s%60).padStart(2,'0');}
 function rules() {get('add-rules').textContent=copy.addRules(limits[get('add-level').value],get('add-mode').value==='challenge');}
 function translate() {
-  copy={...translations[language],...adventureCopy[language],...portalCopy[language],...crosswordCopy[language],...leaderboardCopy[language],...additionCopy[language]};
+  copy={...translations[language],...adventureCopy[language],...portalCopy[language],...crosswordCopy[language],...leaderboardCopy[language],...additionCopy[language],...(isSubtraction?subtractionCopy[language]:{})};
   document.documentElement.lang=language;document.title=copy.addTitle+' · '+copy.portalTitle;
   get('language').value=language;get('language').setAttribute('aria-label',copy.language);
   for(const el of document.querySelectorAll('[data-copy]'))el.textContent=copy[el.dataset.copy];
@@ -47,7 +54,7 @@ function tick() {
 function showQuestion() {
   round.answered=false;
   const q=round.questions[round.index];
-  get('add-equation').textContent=q.a+' + '+q.b+' = ?';
+  get('add-equation').textContent=q.a+(isSubtraction?' − ':' + ')+q.b+' = ?';
   get('add-energy').value=round.index;
   get('add-answer').value='';get('add-answer').disabled=false;
   get('add-check').disabled=false;get('add-next').hidden=true;
@@ -82,7 +89,7 @@ function finish(timeout) {
  clearInterval(ticker);round.done=true;round.timeout=timeout;
  round.ms=timeout?round.limit:Math.round(performance.now()-round.start);
  round.passed=round.timed&&!timeout&&round.score>=8;
- const record={player:round.name,operation:'addition',difficulty:round.digits+'-'+(round.timed?'challenge':'practice'),
+ const record={player:round.name,operation,difficulty:round.digits+'-'+(round.timed?'challenge':'practice'),
   score:round.score,total:10,answered:round.count,ms:round.ms,passed:round.timed?round.passed:null,finished:new Date().toISOString()};
  window.MatteCloud?.save(record);
  try {const records=JSON.parse(localStorage.getItem(historyKey)||'[]');records.unshift(record);localStorage.setItem(historyKey,JSON.stringify(records));}catch {}
