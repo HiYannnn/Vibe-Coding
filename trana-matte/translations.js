@@ -254,7 +254,7 @@ const leaderboardCopy = {
   sv:{
     rankEyebrow:'Stjärnornas liga',rankTitle:'Topplista',rankIntro:'Varje övning tar dig längre. Dina poäng samlas för alltid.',
     rankAll:'Alla upptäckare',rankRefresh:'Uppdatera',rankPosition:'Plats',rankPoints:'Poäng',rankRounds:'Omgångar',
-    rankRules:'Så får du poäng',rankRuleAnswers:'Multiplikation: 1 poäng per rätt svar.',
+    rankRules:'Så får du poäng',rankRuleAnswers:'Addition och multiplikation: 1 poäng per rätt svar.',
     rankRuleWorld:'Första gången du klarar en värld: 10 bonuspoäng.',
     rankRuleBonus:'Klarad Blixtbana: 20 bonuspoäng varje gång.',
     rankRuleCrossword:'Löst mattekorsord: 5 poäng på lätt, 10 på medel, 15 på svår.',
@@ -265,7 +265,7 @@ const leaderboardCopy = {
   en:{
     rankEyebrow:'League of stars',rankTitle:'Leaderboard',rankIntro:'Every practice takes you further. Your points keep adding up.',
     rankAll:'All explorers',rankRefresh:'Refresh',rankPosition:'Rank',rankPoints:'Points',rankRounds:'Rounds',
-    rankRules:'How to earn points',rankRuleAnswers:'Multiplication: 1 point per correct answer.',
+    rankRules:'How to earn points',rankRuleAnswers:'Addition and multiplication: 1 point per correct answer.',
     rankRuleWorld:'First clear of each world: 10 bonus points.',
     rankRuleBonus:'Clear Lightning Run: 20 bonus points every time.',
     rankRuleCrossword:'Solved crossword: 5 points for easy, 10 for medium, 15 for hard.',
@@ -276,7 +276,7 @@ const leaderboardCopy = {
   'zh-CN':{
     rankEyebrow:'星际探险联盟',rankTitle:'星光排行榜',rankIntro:'每一次练习，都让你走得更远。总积分持续累积。',
     rankAll:'全体探险家',rankRefresh:'刷新',rankPosition:'名次',rankPoints:'积分',rankRounds:'练习次数',
-    rankRules:'如何获得积分',rankRuleAnswers:'乘法练习：每答对一题得 1 分。',
+    rankRules:'如何获得积分',rankRuleAnswers:'加法和乘法练习：每答对一题得 1 分。',
     rankRuleWorld:'每个星球首次通关，额外获得 10 分。',
     rankRuleBonus:'闪电赛道每次挑战成功，额外获得 20 分。',
     rankRuleCrossword:'数学填字完成：简单 5 分、进阶 10 分、困难 15 分。',
@@ -284,4 +284,31 @@ const leaderboardCopy = {
     rankError:'暂时无法加载排行榜，请点击刷新重试。',rankLifetime:'累计总积分',
     rankPlay:'开启冒险 →'
   }
+};
+
+const additionCopy = {
+ sv:{
+  addTitle:'Energistationen',addIntro:'Ladda rymdstationen med addition. Välj två, tre eller fyra siffror.',
+  digits2:'Tvåsiffriga tal',digits3:'Tresiffriga tal',digits4:'Fyrsiffriga tal',addMode:'Spelläge',
+  addPractice:'Öva i egen takt',addChallenge:'Tidsutmaning',addStart:'Starta uppdraget →',
+  addRules:(seconds,timed)=>'10 uppgifter med tiotalsövergång. 1 poäng per rätt svar.'+(timed?' Minst 8 rätt inom '+seconds+' sekunder ger en energimedalj.':' Din tid mäts utan tidsgräns.'),
+  addWon:'🏅 Energimedaljen är din!',addDone:'Uppdraget är klart!',addRetry:'Försök igen och ladda mer energi!',
+  addValid:'Skriv ett heltal.',addBadge:'Medaljen finns sparad i din övningshistorik.',addPoints:n=>n+' poäng till topplistan när resultatet har synkats.'
+ },
+ en:{
+  addTitle:'Energy Station',addIntro:'Power the space station with addition. Choose two, three or four digits.',
+  digits2:'Two-digit numbers',digits3:'Three-digit numbers',digits4:'Four-digit numbers',addMode:'Mode',
+  addPractice:'Practice at your own pace',addChallenge:'Timed challenge',addStart:'Start mission →',
+  addRules:(seconds,timed)=>'10 problems including carrying. 1 point per correct answer.'+(timed?' Get at least 8 right in '+seconds+' seconds to earn an energy medal.':' Your time is tracked without a time limit.'),
+  addWon:'🏅 Energy medal earned!',addDone:'Mission complete!',addRetry:'Try again to collect more energy!',
+  addValid:'Enter a whole number.',addBadge:'Your medal is recorded in practice history.',addPoints:n=>n+' points for the leaderboard when the result syncs.'
+ },
+ 'zh-CN':{
+  addTitle:'太空能源站',addIntro:'用加法为太空站充能，选择两位数、三位数或四位数。',
+  digits2:'两位数加法',digits3:'三位数加法',digits4:'四位数加法',addMode:'模式',
+  addPractice:'自由练习',addChallenge:'限时挑战',addStart:'启动任务 →',
+  addRules:(seconds,timed)=>'每轮 10 题，包含进位，每答对一题获得 1 积分。'+(timed?'在 '+seconds+' 秒内答完，至少答对 8 题赢得能源勋章。':'计时记录用时，可以按自己的节奏完成。'),
+  addWon:'🏅 赢得能源勋章！',addDone:'任务完成！',addRetry:'再挑战一次，为能源站充能！',
+  addValid:'请输入一个整数。',addBadge:'能源勋章已记录在这轮练习成绩中。',addPoints:n=>'同步成功后，排行榜增加 '+n+' 积分。'
+ }
 };

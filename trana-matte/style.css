@@ -131,3 +131,10 @@ a.brand:hover strong { text-decoration:underline; text-underline-offset:4px }
 .rank-rules summary{cursor:pointer;font-weight:750}
 .rank-rules ul{color:var(--muted);padding-left:22px}.rank-rules li{margin:7px 0}
 @media(max-width:540px){.podium{gap:7px}.podium-card{width:33%;padding:15px 6px;min-height:202px;border-radius:15px}.podium-1{min-height:230px}.podium-name{font-size:15px}.podium-points{font-size:29px}.podium-card .muted{font-size:11px}.podium-medal{font-size:30px}}
+
+.addition-shell{max-width:960px}.addition-hero{min-height:260px}
+.addition-settings{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}
+.addition-settings label{display:grid;gap:6px}.addition-settings input,.addition-settings select{width:100%}
+#add-start .primary{margin-top:16px}#add-feedback{text-align:center;color:var(--gold);min-height:28px;margin:13px 0}
+#add-summary{margin-top:10px;font-size:20px;font-weight:800}
+@media(max-width:650px){.addition-settings{grid-template-columns:1fr}.addition-hero{min-height:230px}#add-answer-form{flex-wrap:wrap}}

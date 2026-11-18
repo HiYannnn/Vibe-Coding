@@ -94,7 +94,7 @@ function renderMedals() {
 }
 
 function renderLanguage() {
-  copy = { ...translations[language], ...adventureCopy[language], ...portalCopy[language], ...crosswordCopy[language], ...leaderboardCopy[language] };
+  copy = { ...translations[language], ...adventureCopy[language], ...portalCopy[language], ...crosswordCopy[language], ...leaderboardCopy[language], ...additionCopy[language] };
   document.documentElement.lang = language;
   document.title = copy.crossTitle;
   picker.value = language;
