@@ -46,6 +46,10 @@ const missionName = mission => mission === bonusMission ? copy.bonusTitle : copy
 const tableLabel = table => table === 'mixed' ? copy.mixed : copy.table(table);
 const recordScope = record => {
   if (record.operation === 'addition' || record.operation === 'subtraction') return copy[record.operation] + ' · ' + copy['digits' + record.difficulty.split('-')[0]];
+  if (record.operation === 'division') {
+    const [level,stage]=record.difficulty.split('-');
+    return copy.division + ' · ' + copy['digits'+level] + ' · ' + copy.divStages[['cargo','vault','guardian'].indexOf(stage)];
+  }
   if (record.operation === 'crossword') return copy.crossTitle + ' · ' + copy[record.difficulty];
   const mission = record.mission === bonusMission.id ? bonusMission : missions.find(item => item.id === record.mission);
   return mission ? missionName(mission) : tableLabel(record.table);
@@ -151,7 +155,7 @@ function renderRecords() {
   for (const record of records) {
     const row = body.insertRow();
     const values = [record.player, duration(record.ms), record.score + '/' + (record.total ?? 10),
-      recordScope(record), (record.mission || record.operation === 'crossword' || (['addition','subtraction'].includes(record.operation) && record.passed !== null)) ? (record.passed ? copy.passed : copy.lost) : '—', formatDate(record.finished)];
+      recordScope(record), (record.mission || record.operation === 'crossword' || (['addition','subtraction','division'].includes(record.operation) && record.passed !== null)) ? (record.passed ? copy.passed : copy.lost) : '—', formatDate(record.finished)];
     for (const value of values) row.insertCell().textContent = value;
   }
   get('empty').hidden = records.length > 0;
@@ -160,7 +164,7 @@ function renderRecords() {
 }
 
 function applyLanguage() {
-  copy = { ...translations[language], ...adventureCopy[language], ...portalCopy[language], ...crosswordCopy[language], ...leaderboardCopy[language], ...additionCopy[language] };
+  copy = { ...translations[language], ...adventureCopy[language], ...portalCopy[language], ...crosswordCopy[language], ...leaderboardCopy[language], ...additionCopy[language], ...divisionCopy[language] };
   document.documentElement.lang = language;
   document.title = copy.adventureTitle;
   languagePicker.value = language;
@@ -426,7 +430,7 @@ get('export').addEventListener('click', () => {
   const rows = [[copy.name, copy.seconds, copy.score, copy.total, copy.scope, copy.outcome, copy.finished]];
   for (const record of records) rows.push([record.player, (record.ms / 1000).toFixed(1),
     record.score, record.total ?? 10, recordScope(record),
-    (record.mission || record.operation === 'crossword' || (['addition','subtraction'].includes(record.operation) && record.passed !== null)) ? (record.passed ? copy.passed : copy.lost) : '', formatDate(record.finished)]);
+    (record.mission || record.operation === 'crossword' || (['addition','subtraction','division'].includes(record.operation) && record.passed !== null)) ? (record.passed ? copy.passed : copy.lost) : '', formatDate(record.finished)]);
   const url = URL.createObjectURL(new Blob(['\uFEFF' + rows.map(row => row.map(cell).join(',')).join('\r\n')],
     { type:'text/csv;charset=utf-8' }));
   const link = document.createElement('a');

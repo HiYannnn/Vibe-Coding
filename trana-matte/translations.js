@@ -254,8 +254,8 @@ const leaderboardCopy = {
   sv:{
     rankEyebrow:'Stjärnornas liga',rankTitle:'Topplista',rankIntro:'Varje övning tar dig längre. Dina poäng samlas för alltid.',
     rankAll:'Alla upptäckare',rankRefresh:'Uppdatera',rankPosition:'Plats',rankPoints:'Poäng',rankRounds:'Omgångar',
-    rankRules:'Så får du poäng',rankRuleAnswers:'Addition, subtraktion och multiplikation: 1 poäng per rätt svar.',
-    rankRuleWorld:'Första gången du klarar en värld: 10 bonuspoäng.',
+    rankRules:'Så får du poäng',rankRuleAnswers:'Alla räknesätt: 1 poäng per rätt svar.',
+    rankRuleWorld:'Första gången du klarar en värld eller ett divisionsuppdrag: 10 bonuspoäng.',
     rankRuleBonus:'Klarad Blixtbana: 20 bonuspoäng varje gång.',
     rankRuleCrossword:'Löst mattekorsord: 5 poäng på lätt, 10 på medel, 15 på svår.',
     rankLoading:'Hämtar stjärnpoäng…',rankEmpty:'Bli den första upptäckaren! Slutför en övning för att ta plats här.',
@@ -265,8 +265,8 @@ const leaderboardCopy = {
   en:{
     rankEyebrow:'League of stars',rankTitle:'Leaderboard',rankIntro:'Every practice takes you further. Your points keep adding up.',
     rankAll:'All explorers',rankRefresh:'Refresh',rankPosition:'Rank',rankPoints:'Points',rankRounds:'Rounds',
-    rankRules:'How to earn points',rankRuleAnswers:'Addition, subtraction and multiplication: 1 point per correct answer.',
-    rankRuleWorld:'First clear of each world: 10 bonus points.',
+    rankRules:'How to earn points',rankRuleAnswers:'Arithmetic practice: 1 point per correct answer.',
+    rankRuleWorld:'First clear of each world or division mission: 10 bonus points.',
     rankRuleBonus:'Clear Lightning Run: 20 bonus points every time.',
     rankRuleCrossword:'Solved crossword: 5 points for easy, 10 for medium, 15 for hard.',
     rankLoading:'Collecting star points…',rankEmpty:'Be the first explorer! Complete a practice round to appear here.',
@@ -276,8 +276,8 @@ const leaderboardCopy = {
   'zh-CN':{
     rankEyebrow:'星际探险联盟',rankTitle:'星光排行榜',rankIntro:'每一次练习，都让你走得更远。总积分持续累积。',
     rankAll:'全体探险家',rankRefresh:'刷新',rankPosition:'名次',rankPoints:'积分',rankRounds:'练习次数',
-    rankRules:'如何获得积分',rankRuleAnswers:'加法、减法和乘法练习：每答对一题得 1 分。',
-    rankRuleWorld:'每个星球首次通关，额外获得 10 分。',
+    rankRules:'如何获得积分',rankRuleAnswers:'四则运算练习：每答对一题得 1 分。',
+    rankRuleWorld:'每个星球或除法任务首次通关，额外获得 10 分。',
     rankRuleBonus:'闪电赛道每次挑战成功，额外获得 20 分。',
     rankRuleCrossword:'数学填字完成：简单 5 分、进阶 10 分、困难 15 分。',
     rankLoading:'正在收集星光积分…',rankEmpty:'成为第一位探险家！完成一次练习，就能登上排行榜。',
@@ -331,5 +331,62 @@ const subtractionCopy = {
   addRules:(seconds,timed)=>'每轮 10 题，包含退位，答案为零或正数。每答对一题获得 1 积分。'+(timed?'在 '+seconds+' 秒内答完，至少答对 8 题赢得月球勋章。':'计时记录用时，可以按自己的节奏完成。'),
   addWon:'🏅 赢得月球勋章！',addDone:'月球任务完成！',addRetry:'再挑战一次，帮助修复月球基地！',
   addBadge:'月球勋章已记录在这轮练习成绩中。'
+ }
+};
+
+const divisionCopy = {
+ sv:{
+  divTitle:'Delningsgalaxen',divIntro:'Två äventyr. Tre uppdrag i varje. Alla svar är heltal.',
+  divTwo:'Tvåsiffrigt',divThree:'Tresiffrigt',
+  divTrackInfo:digits=>'Ett '+(digits===2?'två':'tre')+'siffrigt tal delas med ett tal från 2 till 9. Inga rester.',
+  divRewards:'1 poäng per rätt svar. Första klarade uppdraget ger 10 bonuspoäng. Väktaren ger en galaxmedalj.',
+  divStages:['Laststationen','Kodvalvet','Galaxväktaren'],
+  divDescription:[
+   'Dela upp rymdlasten. Skriv kvoten i din egen takt.',
+   'Knäck koden: hitta talet som saknas före divisionstecknet.',
+   'Blandade luckor, nedräkning och tre sköldar. Varje fel kostar en sköld.'
+  ],
+  divRules:(goal,total,seconds)=>goal+' av '+total+' rätt'+(seconds?' · '+seconds+' sekunder':' · Ingen tidsgräns'),
+  divPrompt:'Skriv ett smeknamn. Två- och tresiffrigt har varsin framstegskarta.',
+  divProgress:(name,n)=>name+' · '+n+' av 3 uppdrag klarade',
+  divDone:'🏆 Galaxmedaljen är din!',divComplete:'Du klarade alla uppdrag på det här spåret!',
+  divValid:'Skriv ett heltal.',divPoints:n=>n+' poäng från rätta svar. Första klarade uppdraget ger 10 till.',
+  divMissing:'Fyll i det saknade talet.'
+ },
+ en:{
+  divTitle:'Division Galaxy',divIntro:'Two adventures. Three missions each. Every answer is a whole number.',
+  divTwo:'Two-digit track',divThree:'Three-digit track',
+  divTrackInfo:digits=>'Divide a '+(digits===2?'two':'three')+'-digit number by a number from 2 to 9. No remainders.',
+  divRewards:'1 point per correct answer. First clear of each mission adds 10 bonus points. Beat the guardian for a galaxy medal.',
+  divStages:['Cargo Station','Code Vault','Galaxy Guardian'],
+  divDescription:[
+   'Share the space cargo. Type the quotient at your own pace.',
+   'Crack the code: find the missing dividend.',
+   'Mixed missing numbers, a countdown and three shields. Each mistake costs one shield.'
+  ],
+  divRules:(goal,total,seconds)=>goal+' of '+total+' correct'+(seconds?' · '+seconds+' seconds':' · No time limit'),
+  divPrompt:'Enter a nickname. Two- and three-digit tracks have separate progress.',
+  divProgress:(name,n)=>name+' · '+n+' of 3 missions cleared',
+  divDone:'🏆 Galaxy medal earned!',divComplete:'You cleared every mission in this track!',
+  divValid:'Enter a whole number.',divPoints:n=>n+' points from correct answers. First mission clear adds 10 more.',
+  divMissing:'Fill in the missing number.'
+ },
+ 'zh-CN':{
+  divTitle:'除法星系',divIntro:'两条探险路线，每条三个任务，所有题目都能整除。',
+  divTwo:'两位数路线',divThree:'三位数路线',
+  divTrackInfo:digits=>'被除数为'+(digits===2?'两':'三')+'位数，除数为 2–9，无余数。',
+  divRewards:'每答对一题得 1 积分。每个任务首次通关额外得 10 分，击败守卫赢得星系勋章。',
+  divStages:['货运空间站','密码宝库','星系守卫'],
+  divDescription:[
+   '分配太空货物，自己输入商，按自己的节奏完成。',
+   '破解密码，找出缺失的被除数。',
+   '混合填空、倒计时和三个护盾。每答错一次消耗一个护盾。'
+  ],
+  divRules:(goal,total,seconds)=>total+' 题至少答对 '+goal+' 题'+(seconds?' · '+seconds+' 秒':' · 无时间限制'),
+  divPrompt:'输入昵称。两位数与三位数路线分别解锁关卡。',
+  divProgress:(name,n)=>name+' · 已通过 '+n+' / 3 个任务',
+  divDone:'🏆 赢得星系勋章！',divComplete:'这条路线的三个任务全部通过！',
+  divValid:'请输入一个整数。',divPoints:n=>'答题获得 '+n+' 积分，任务首次通关额外获得 10 分。',
+  divMissing:'补全缺失的数字。'
  }
 };

@@ -1,0 +1,18 @@
+<!doctype html>
+<html lang="sv"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#101c2b"><title>Division · Träna Matte</title><link rel="stylesheet" href="style.css"><script defer src="translations.js"></script><script defer src="cloud.js"></script><script defer src="division.js"></script></head>
+<body><div class="shell">
+<header><a class="brand" href="./"><span class="mark" aria-hidden="true">✦</span><strong data-copy="portalTitle">Träna Matte</strong></a><div class="header-actions"><a class="outline portal-link" href="topplista.html" data-copy="rankTitle">Topplista</a><a class="outline portal-link" href="multiplikation.html#records" data-copy="records">Övningshistorik</a><select id="language" aria-label="Språk"><option value="sv">Svenska</option><option value="en">English</option><option value="zh-CN">中文</option></select></div></header>
+<main>
+<section class="hero division-hero"><div class="hero-copy"><p class="eyebrow" data-copy="division">Division</p><h1 data-copy="divTitle">Delningsgalaxen</h1><p data-copy="divIntro">Två äventyr. Tre uppdrag i varje. Alla svar är heltal.</p></div></section>
+<section id="div-map" class="panel" aria-labelledby="div-map-title">
+<div class="map-head"><div><h2 id="div-map-title" tabindex="-1" data-copy="map">Stjärnkarta</h2><p class="muted" id="div-map-progress"></p></div><form id="div-profile"><label><span data-copy="nickname">Ditt smeknamn</span><input id="player" maxlength="24" required autocomplete="off"></label></form></div>
+<div class="division-tracks" role="group" aria-label="Svårighetsgrad" id="div-tracks"><button class="outline" id="div-two" data-copy="divTwo" aria-pressed="true">Tvåsiffrigt</button><button class="outline" id="div-three" data-copy="divThree" aria-pressed="false">Tresiffrigt</button></div>
+<p class="muted" id="div-track-info"></p><div id="div-stages" class="trail division-trail"></div>
+<p class="muted" data-copy="divRewards"></p>
+</section>
+<section class="panel game" id="div-game" hidden><div class="hud"><div><span class="eyebrow" id="div-number"></span><h2 id="div-mission"></h2></div><div class="stats"><span id="div-score"></span><span id="div-timer"></span></div></div><p class="muted" id="div-goal"></p><progress id="div-progress" value="0" max="8"></progress><div class="arena" id="div-arena"><span class="orbit" id="div-icon" aria-hidden="true"></span><h3 class="equation" id="div-equation"></h3></div>
+<form class="answer-form" id="div-answer-form" novalidate><input id="div-answer" type="text" inputmode="numeric" autocomplete="off" maxlength="3"><button class="primary" id="div-check" data-copy="fire">Skicka svar</button></form>
+<p id="div-feedback" role="status"></p><div class="game-actions"><button class="outline" id="div-quit" data-copy="quit">Avsluta omgången</button><button class="primary" id="div-next" data-copy="next" hidden>Nästa fråga →</button></div>
+</section>
+<section class="panel result" id="div-result" hidden><div class="reward" id="div-reward" aria-hidden="true"></div><h2 id="div-result-title" tabindex="-1"></h2><p id="div-summary"></p><p class="muted" id="div-note"></p><div class="game-actions"><button class="outline" id="div-back" data-copy="back">Till stjärnkartan</button><button class="primary" id="div-retry"></button></div></section>
+</main></div></body></html>

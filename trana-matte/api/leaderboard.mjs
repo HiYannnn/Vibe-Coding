@@ -10,7 +10,7 @@ export default async function handler(req, res) {
     const result = await pool.query(`
       WITH scored AS (
         SELECT r.*, row_number() OVER (
-          PARTITION BY player_id, activity, passed ORDER BY received_at, id
+          PARTITION BY player_id, operation, activity, passed ORDER BY received_at, id
         ) AS achievement_number
         FROM matte_practice_runs r
       ), totals AS (
@@ -18,6 +18,8 @@ export default async function handler(req, res) {
           sum(CASE
             WHEN operation='crossword' AND passed THEN
               CASE activity WHEN 'easy' THEN 5 WHEN 'medium' THEN 10 WHEN 'hard' THEN 15 ELSE 0 END
+            WHEN operation='division' THEN score
+              + CASE WHEN passed AND achievement_number=1 THEN 10 ELSE 0 END
             WHEN operation IN ('addition','subtraction') THEN score
             WHEN operation='multiplication' THEN score
               + CASE WHEN activity='bonus' AND passed THEN 20

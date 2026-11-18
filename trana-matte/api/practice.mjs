@@ -12,7 +12,7 @@ export default async function handler(req, res) {
   const valid = typeof token === 'string' && /^[0-9a-f]{64}$/.test(token)
     && record && uuid.test(record.id)
     && typeof record.player === 'string' && record.player.trim().length >= 1 && record.player.length <= 24
-    && ['multiplication', 'crossword', 'addition', 'subtraction'].includes(record.operation)
+    && ['multiplication', 'crossword', 'addition', 'subtraction', 'division'].includes(record.operation)
     && typeof record.activity === 'string' && record.activity.length >= 1 && record.activity.length <= 40
     && Number.isInteger(record.total) && record.total >= 1 && record.total <= 100
     && Number.isInteger(record.answered) && record.answered >= 0 && record.answered <= record.total
