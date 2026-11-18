@@ -18,7 +18,7 @@ export default async function handler(req, res) {
           sum(CASE
             WHEN operation='crossword' AND passed THEN
               CASE activity WHEN 'easy' THEN 5 WHEN 'medium' THEN 10 WHEN 'hard' THEN 15 ELSE 0 END
-            WHEN operation='division' THEN score
+            WHEN operation IN ('division','fractions') THEN score
               + CASE WHEN passed AND achievement_number=1 THEN 10 ELSE 0 END
             WHEN operation IN ('addition','subtraction') THEN score
             WHEN operation='multiplication' THEN score

@@ -1,0 +1,24 @@
+<!doctype html>
+<html lang="sv"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#101c2b"><title>Bråk · Träna Matte</title><link rel="stylesheet" href="style.css"><script defer src="translations.js"></script><script defer src="cloud.js"></script><script defer src="fractions.js"></script></head>
+<body><div class="shell fractions-shell">
+<header><a class="brand" href="./"><span class="mark" aria-hidden="true">✦</span><strong data-copy="portalTitle">Träna Matte</strong></a><div class="header-actions"><a class="outline portal-link" href="topplista.html" data-copy="rankTitle">Topplista</a><a class="outline portal-link" href="multiplikation.html#records" data-copy="records">Övningshistorik</a><select id="language" aria-label="Språk"><option value="sv">Svenska</option><option value="en">English</option><option value="zh-CN">中文</option></select></div></header>
+<main>
+<section class="hero fraction-hero"><div class="hero-copy"><p class="eyebrow" data-copy="fracSubject">Bråk</p><h1 data-copy="fracTitle">Rymdens bråkverkstad</h1><p data-copy="fracIntro">Laga rymdmat, ladda energipaneler och balansera planeter.</p></div></section>
+<section class="panel" id="frac-setup">
+<div class="map-head"><h2 data-copy="fracChoose">Välj ditt uppdrag</h2><form id="frac-profile"><label><span data-copy="nickname">Ditt smeknamn</span><input id="player" required maxlength="24" autocomplete="off"></label></form></div>
+<div class="fraction-levels"><label for="frac-level" data-copy="difficulty">Svårighetsgrad</label><select id="frac-level"><option value="basic" data-copy="fracBasic">Grund</option><option value="advanced" data-copy="fracAdvanced">Utmaning</option></select></div>
+<p id="frac-level-info" class="muted"></p><div class="trail fraction-trail" id="frac-modes"></div><p class="muted" data-copy="fracRules">10 frågor. Minst 8 rätt ger en medalj. 1 poäng per rätt svar.</p>
+</section>
+<section class="panel game" id="frac-game" hidden>
+<div class="hud"><div><span class="eyebrow" id="frac-number"></span><h2 id="frac-mission"></h2></div><div class="stats"><span id="frac-score"></span><span id="frac-timer"></span></div></div>
+<progress id="frac-progress" value="0" max="10"></progress><h3 id="frac-prompt" class="fraction-prompt" tabindex="-1"></h3>
+<div id="frac-visual" class="fraction-visual"></div>
+<form id="frac-answer-form" novalidate>
+<div id="frac-inputs" class="fraction-inputs"><label><span data-copy="fracNumerator">Täljare</span><input id="frac-numerator" type="text" inputmode="numeric" maxlength="2" autocomplete="off"></label><span class="fraction-slash" aria-hidden="true">/</span><label><span data-copy="fracDenominator">Nämnare</span><input id="frac-denominator" type="text" inputmode="numeric" maxlength="2" autocomplete="off"></label></div>
+<div id="frac-comparisons" class="fraction-comparisons" hidden><button type="button" class="answer" data-relation="<">&lt;</button><button type="button" class="answer" data-relation="=">=</button><button type="button" class="answer" data-relation=">">&gt;</button></div>
+<button class="primary" id="frac-check" data-copy="check">Kontrollera</button>
+</form>
+<p id="frac-feedback" role="status"></p><div class="game-actions"><button class="outline" id="frac-quit" data-copy="quit">Avsluta omgången</button><button class="primary" id="frac-next" data-copy="next" hidden>Nästa fråga →</button></div>
+</section>
+<section class="panel result" id="frac-result" hidden><div class="reward" id="frac-reward" aria-hidden="true"></div><h2 id="frac-result-title" tabindex="-1"></h2><p id="frac-summary"></p><p id="frac-result-note" class="muted"></p><div class="game-actions"><button class="outline" id="frac-back" data-copy="fracBack">Välj uppdrag</button><button class="primary" id="frac-again" data-copy="again">Spela igen ↻</button></div></section>
+</main></div></body></html>

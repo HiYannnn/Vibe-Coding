@@ -254,8 +254,8 @@ const leaderboardCopy = {
   sv:{
     rankEyebrow:'Stjärnornas liga',rankTitle:'Topplista',rankIntro:'Varje övning tar dig längre. Dina poäng samlas för alltid.',
     rankAll:'Alla upptäckare',rankRefresh:'Uppdatera',rankPosition:'Plats',rankPoints:'Poäng',rankRounds:'Omgångar',
-    rankRules:'Så får du poäng',rankRuleAnswers:'Alla räknesätt: 1 poäng per rätt svar.',
-    rankRuleWorld:'Första gången du klarar en värld eller ett divisionsuppdrag: 10 bonuspoäng.',
+    rankRules:'Så får du poäng',rankRuleAnswers:'Räknesätt och bråk: 1 poäng per rätt svar.',
+    rankRuleWorld:'Första gången du klarar en värld, ett divisionsuppdrag eller ett bråkuppdrag: 10 bonuspoäng.',
     rankRuleBonus:'Klarad Blixtbana: 20 bonuspoäng varje gång.',
     rankRuleCrossword:'Löst mattekorsord: 5 poäng på lätt, 10 på medel, 15 på svår.',
     rankLoading:'Hämtar stjärnpoäng…',rankEmpty:'Bli den första upptäckaren! Slutför en övning för att ta plats här.',
@@ -265,8 +265,8 @@ const leaderboardCopy = {
   en:{
     rankEyebrow:'League of stars',rankTitle:'Leaderboard',rankIntro:'Every practice takes you further. Your points keep adding up.',
     rankAll:'All explorers',rankRefresh:'Refresh',rankPosition:'Rank',rankPoints:'Points',rankRounds:'Rounds',
-    rankRules:'How to earn points',rankRuleAnswers:'Arithmetic practice: 1 point per correct answer.',
-    rankRuleWorld:'First clear of each world or division mission: 10 bonus points.',
+    rankRules:'How to earn points',rankRuleAnswers:'Arithmetic and fractions: 1 point per correct answer.',
+    rankRuleWorld:'First clear of each world, division mission or fraction mission: 10 bonus points.',
     rankRuleBonus:'Clear Lightning Run: 20 bonus points every time.',
     rankRuleCrossword:'Solved crossword: 5 points for easy, 10 for medium, 15 for hard.',
     rankLoading:'Collecting star points…',rankEmpty:'Be the first explorer! Complete a practice round to appear here.',
@@ -276,8 +276,8 @@ const leaderboardCopy = {
   'zh-CN':{
     rankEyebrow:'星际探险联盟',rankTitle:'星光排行榜',rankIntro:'每一次练习，都让你走得更远。总积分持续累积。',
     rankAll:'全体探险家',rankRefresh:'刷新',rankPosition:'名次',rankPoints:'积分',rankRounds:'练习次数',
-    rankRules:'如何获得积分',rankRuleAnswers:'四则运算练习：每答对一题得 1 分。',
-    rankRuleWorld:'每个星球或除法任务首次通关，额外获得 10 分。',
+    rankRules:'如何获得积分',rankRuleAnswers:'四则运算和分数练习：每答对一题得 1 分。',
+    rankRuleWorld:'每个星球、除法任务或分数任务首次通关，额外获得 10 分。',
     rankRuleBonus:'闪电赛道每次挑战成功，额外获得 20 分。',
     rankRuleCrossword:'数学填字完成：简单 5 分、进阶 10 分、困难 15 分。',
     rankLoading:'正在收集星光积分…',rankEmpty:'成为第一位探险家！完成一次练习，就能登上排行榜。',
@@ -388,5 +388,62 @@ const divisionCopy = {
   divDone:'🏆 赢得星系勋章！',divComplete:'这条路线的三个任务全部通过！',
   divValid:'请输入一个整数。',divPoints:n=>'答题获得 '+n+' 积分，任务首次通关额外获得 10 分。',
   divMissing:'补全缺失的数字。'
+ }
+};
+
+const fractionCopy = {
+ sv:{
+  fracSubject:'Bråk',fracTitle:'Rymdens bråkverkstad',fracIntro:'Laga rymdmat, ladda energipaneler och balansera planeter.',
+  fracChoose:'Välj ditt uppdrag',fracBasic:'Grund',fracAdvanced:'Utmaning',
+  fracBasicInfo:'Halvor, tredjedelar och fjärdedelar. Jämför bråk med samma nämnare.',
+  fracAdvancedInfo:'Fjärdedelar, sjättedelar, åttondelar, tiondelar och tolftedelar. Jämför olika nämnare och likvärdiga bråk.',
+  fracNames:['Rymdköket','Energipanelen','Stjärnvågen'],
+  fracDescriptions:['Vilken del av rymdmaten är färgad? Skriv bråket.','Tryck på lika stora delar och färglägg det angivna bråket.','Jämför två bråk. Välj mindre än, lika med eller större än.'],
+  fracRules:'10 frågor utan tidsgräns. Minst 8 rätt ger en medalj. 1 poäng per rätt svar, plus 10 första gången du klarar varje uppdrag på varje nivå.',
+  fracNumerator:'Täljare',fracDenominator:'Nämnare',fracRead:'Vilket bråk är färgat?',
+  fracPaint:n=>'Färglägg '+n+' av panelen.',fracCompare:'Vilket tecken passar mellan bråken?',
+  fracSelected:(n,d)=>n+' av '+d+' delar valda',fracPiece:(n,d)=>'Del '+n+' av '+d,
+  fracImage:(n,d)=>n+' av '+d+' lika stora delar är färgade',
+  fracValid:'Skriv två heltal. Nämnaren måste vara större än noll.',
+  fracSolution:n=>'Bråket i bilden är '+n+'.',fracPaintSolution:(n,d)=>'Välj '+n+' av '+d+' lika stora delar.',
+  fracCompareSolution:(a,sign,b)=>a+' '+sign+' '+b,
+  fracMedal:'🏅 Uppdragets medalj är din!',fracBack:'Välj uppdrag',fracPoints:n=>n+' poäng från rätta svar. Första klarade uppdraget ger 10 till.',
+  fracLess:'Mindre än',fracEqual:'Lika med',fracGreater:'Större än'
+ },
+ en:{
+  fracSubject:'Fractions',fracTitle:'Space Fraction Workshop',fracIntro:'Prepare space food, power energy panels and balance planets.',
+  fracChoose:'Choose your mission',fracBasic:'Basics',fracAdvanced:'Challenge',
+  fracBasicInfo:'Halves, thirds and quarters. Compare fractions with the same denominator.',
+  fracAdvancedInfo:'Quarters, sixths, eighths, tenths and twelfths. Compare different denominators and equivalent fractions.',
+  fracNames:['Space Kitchen','Energy Panel','Star Scales'],
+  fracDescriptions:['What fraction of the space food is coloured? Write the fraction.','Tap equal parts to colour the requested fraction.','Compare two fractions. Choose less than, equal to or greater than.'],
+  fracRules:'10 questions without a time limit. At least 8 correct earns a medal. 1 point per correct answer, plus 10 for the first clear of each mission at each level.',
+  fracNumerator:'Numerator',fracDenominator:'Denominator',fracRead:'What fraction is coloured?',
+  fracPaint:n=>'Colour '+n+' of the panel.',fracCompare:'Which symbol belongs between the fractions?',
+  fracSelected:(n,d)=>n+' of '+d+' parts selected',fracPiece:(n,d)=>'Part '+n+' of '+d,
+  fracImage:(n,d)=>n+' of '+d+' equal parts are coloured',
+  fracValid:'Enter two whole numbers. The denominator must be greater than zero.',
+  fracSolution:n=>'The fraction shown is '+n+'.',fracPaintSolution:(n,d)=>'Select '+n+' of '+d+' equal parts.',
+  fracCompareSolution:(a,sign,b)=>a+' '+sign+' '+b,
+  fracMedal:'🏅 Mission medal earned!',fracBack:'Choose a mission',fracPoints:n=>n+' points from correct answers. First mission clear adds 10 more.',
+  fracLess:'Less than',fracEqual:'Equal to',fracGreater:'Greater than'
+ },
+ 'zh-CN':{
+  fracSubject:'分数',fracTitle:'太空分数工坊',fracIntro:'制作太空美食，修复能源板，用分数平衡星球。',
+  fracChoose:'选择你的任务',fracBasic:'基础',fracAdvanced:'进阶',
+  fracBasicInfo:'认识二分、三分、四分，比较同分母分数。',
+  fracAdvancedInfo:'认识四分、六分、八分、十分、十二分，比较不同分母和等值分数。',
+  fracNames:['太空厨房','修复能源板','星际天平'],
+  fracDescriptions:['看图判断食物的涂色部分占几分之几，输入分数。','点击大小相等的格子，涂出指定的分数。','比较两个分数，选择小于、等于或大于。'],
+  fracRules:'每轮 10 题，无时间限制，至少对 8 题获得勋章。每题答对得 1 积分，每种玩法每个难度首次通关额外得 10 分。',
+  fracNumerator:'分子',fracDenominator:'分母',fracRead:'涂色部分占几分之几？',
+  fracPaint:n=>'请涂出能源板的 '+n+'。',fracCompare:'两个分数之间应该填什么符号？',
+  fracSelected:(n,d)=>'已选择 '+n+' / '+d+' 格',fracPiece:(n,d)=>'第 '+n+' 格，共 '+d+' 格',
+  fracImage:(n,d)=>'平均分成 '+d+' 份，其中 '+n+' 份已涂色',
+  fracValid:'请输入两个整数，分母必须大于零。',
+  fracSolution:n=>'图中表示的分数是 '+n+'。',fracPaintSolution:(n,d)=>'应选择 '+d+' 格中的 '+n+' 格。',
+  fracCompareSolution:(a,sign,b)=>a+' '+sign+' '+b,
+  fracMedal:'🏅 赢得任务勋章！',fracBack:'选择任务',fracPoints:n=>'答题获得 '+n+' 积分，每个难度每种玩法首次通关额外得 10 分。',
+  fracLess:'小于',fracEqual:'等于',fracGreater:'大于'
  }
 };
