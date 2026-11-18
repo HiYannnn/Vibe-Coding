@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="sv">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#101c2b">
+<title>Träna Matte</title>
+<link rel="stylesheet" href="style.css">
+<script defer src="translations.js"></script>
+<script defer src="portal.js"></script>
+</head>
+<body>
+<div class="shell portal-shell">
+<header>
+  <div class="brand"><span class="mark" aria-hidden="true">✦</span><strong data-copy="portalTitle">Träna Matte</strong></div>
+  <div class="header-actions">
+    <a class="outline portal-link" href="multiplikation.html#records" data-copy="records">Övningshistorik</a>
+    <select id="language" aria-label="Språk"><option value="sv" lang="sv">Svenska</option><option value="en" lang="en">English</option><option value="zh-CN" lang="zh-CN">中文</option></select>
+  </div>
+</header>
+<main>
+  <section class="hero portal-hero" aria-labelledby="title">
+    <div class="hero-copy">
+      <h1 id="title" data-copy="adventureTitle">Rymdäventyr</h1>
+      <p data-copy="adventureIntro">Besök fyra världar, samla stjärnor och möt stjärnväktaren.</p>
+    </div>
+  </section>
+  <section class="subjects" aria-labelledby="subjects-title">
+    <h2 id="subjects-title" data-copy="subjectsTitle">Välj räknesätt</h2>
+    <ul class="subject-grid">
+      <li class="subject subject-add">
+        <span class="math-symbol" aria-hidden="true">+</span>
+        <h3 data-copy="addition">Addition</h3>
+        <span class="subject-state" data-copy="comingSoon">Kommer snart</span>
+      </li>
+      <li class="subject subject-subtract">
+        <span class="math-symbol" aria-hidden="true">−</span>
+        <h3 data-copy="subtraction">Subtraktion</h3>
+        <span class="subject-state" data-copy="comingSoon">Kommer snart</span>
+      </li>
+      <li class="subject subject-multiply">
+        <span class="math-symbol" aria-hidden="true">×</span>
+        <h3 data-copy="multiplication">Multiplikation</h3>
+        <p data-copy="adventureTitle">Rymdäventyr</p>
+        <a class="primary subject-play" href="multiplikation.html" data-copy="playMultiplication">Spela Rymdäventyr →</a>
+      </li>
+      <li class="subject subject-divide">
+        <span class="math-symbol" aria-hidden="true">÷</span>
+        <h3 data-copy="division">Division</h3>
+        <span class="subject-state" data-copy="comingSoon">Kommer snart</span>
+      </li>
+    </ul>
+  </section>
+  <section class="practice crossword-entry" aria-labelledby="crossword-entry">
+    <div><h2 id="crossword-entry" data-copy="crossTitle">Mattekorsord</h2><p class="muted" data-copy="crossIntro">Fyll i tal så att alla vågräta och lodräta beräkningar stämmer.</p></div>
+    <a class="primary" href="korsord.html" data-copy="crossPlay">Spela mattekorsord →</a>
+  </section>
+</main>
+</div>
+</body>
+</html>

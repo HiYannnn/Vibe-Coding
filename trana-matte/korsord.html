@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="sv">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#101c2b">
+<title>Mattekorsord</title>
+<link rel="stylesheet" href="style.css">
+<script defer src="translations.js"></script>
+<script defer src="crossword.js"></script>
+</head>
+<body>
+<div class="shell crossword-shell">
+<header>
+  <a class="brand" href="./"><span class="mark" aria-hidden="true">✦</span><strong data-copy="portalTitle">Träna Matte</strong></a>
+  <div class="header-actions">
+    <a class="outline portal-link" href="multiplikation.html#records" data-copy="records">Övningshistorik</a>
+    <select id="language" aria-label="Språk"><option value="sv">Svenska</option><option value="en">English</option><option value="zh-CN">中文</option></select>
+  </div>
+</header>
+<main>
+<section class="crossword-hero">
+  <h1 data-copy="crossTitle">Mattekorsord</h1>
+  <p data-copy="crossIntro">Fyll i tal så att alla vågräta och lodräta beräkningar stämmer.</p>
+</section>
+<section class="panel">
+  <form id="setup" class="crossword-setup" novalidate>
+    <label><span data-copy="nickname">Ditt smeknamn</span><input id="player" required maxlength="24" autocomplete="off"></label>
+    <label><span data-copy="difficulty">Svårighetsgrad</span><select id="difficulty" aria-describedby="difficulty-info"><option value="easy" data-copy="easy">Lätt</option><option value="medium" data-copy="medium">Medel</option><option value="hard" data-copy="hard">Svår</option></select></label>
+    <button class="primary" id="start" data-copy="newPuzzle">Starta korsord</button>
+  </form>
+  <p class="muted" id="difficulty-info"></p>
+  <form id="puzzle" class="puzzle" hidden>
+    <div class="crossword-hud"><strong id="active-level"></strong><span id="puzzle-timer">0:00</span></div>
+    <div id="board" class="crossword-board"></div>
+    <p id="puzzle-status" role="status"></p>
+    <button class="primary" id="check" data-copy="check">Kontrollera</button>
+  </form>
+</section>
+<section class="panel" aria-labelledby="medal-title"><h2 id="medal-title" data-copy="medalTitle">Korsordsmedaljer</h2><p class="muted" id="medal-progress"></p><ul class="medal-list">
+<li class="medal" id="medal-easy"><span aria-hidden="true">🥉</span><strong data-copy="bronze">Brons</strong><small data-copy="easy"></small><small class="medal-state"></small></li>
+<li class="medal" id="medal-medium"><span aria-hidden="true">🥈</span><strong data-copy="silver">Silver</strong><small data-copy="medium"></small><small class="medal-state"></small></li>
+<li class="medal" id="medal-hard"><span aria-hidden="true">🥇</span><strong data-copy="gold">Guld</strong><small data-copy="hard"></small><small class="medal-state"></small></li>
+</ul></section>
+</main>
+</div>
+</body>
+</html>

@@ -1,0 +1,86 @@
+<!doctype html>
+<html lang="sv">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#101c2b">
+<title>Rymdäventyr</title>
+<link rel="stylesheet" href="style.css">
+<script defer src="translations.js"></script>
+<script defer src="game.js"></script>
+</head>
+<body>
+<div class="shell">
+<header>
+  <a class="brand" href="./"><span class="mark" aria-hidden="true">✦</span><strong data-copy="portalTitle">Träna Matte</strong></a>
+  <div class="header-actions">
+    <button class="outline" type="button" id="view-records" data-copy="records">Övningshistorik</button>
+    <select id="language" aria-label="Språk"><option value="sv" lang="sv">Svenska</option><option value="en" lang="en">English</option><option value="zh-CN" lang="zh-CN">中文</option></select>
+  </div>
+</header>
+<main>
+  <section class="hero" aria-labelledby="title">
+    <div class="hero-copy">
+      <p class="eyebrow" data-copy="camp">Träna multiplikation</p>
+      <h1 id="title" data-copy="adventureTitle">Rymdäventyr</h1>
+      <p data-copy="adventureIntro">Besök fyra världar, samla stjärnor och möt stjärnväktaren.</p>
+      <a class="primary" href="#map" data-copy="explore">Öppna stjärnkartan ↓</a>
+    </div>
+  </section>
+
+  <section id="map" aria-labelledby="map-title">
+    <div class="map-head">
+      <div><h2 id="map-title" tabindex="-1" data-copy="map">Stjärnkarta</h2><p id="map-status" class="muted"></p></div>
+      <form id="name-form" novalidate><label for="player" data-copy="nickname">Ditt smeknamn</label><input id="player" required maxlength="24" placeholder="Till exempel Alex" autocomplete="off"></form>
+    </div>
+    <div class="trail" id="trail"></div>
+    <section class="bonus" aria-labelledby="bonus-title">
+      <div class="bonus-emblem" aria-hidden="true">⚡</div>
+      <div class="bonus-copy">
+        <h3 id="bonus-title" data-copy="bonusTitle">Blixtbanan</h3>
+        <p class="muted" data-copy="bonusRules"></p>
+        <p class="bonus-status" id="bonus-status"></p>
+      </div>
+      <button class="primary" id="bonus-start" type="button" data-copy="bonusStart" disabled>Starta blixtbanan</button>
+    </section>
+    <form id="practice" class="practice">
+      <div><h3 data-copy="free">Fri träning</h3><p class="muted" data-copy="freeDesc">Välj en tabell och öva i din egen takt.</p></div>
+      <div class="practice-actions"><select id="table-choice" aria-label="Vilken tabell vill du öva på?"><option value="mixed">Blandat · 1–10</option></select><button class="outline" data-copy="practiceStart">Öva</button></div>
+    </form>
+  </section>
+
+  <section class="panel game" id="game" aria-labelledby="mission-title" hidden>
+    <div class="hud"><div><span class="eyebrow" id="question-number"></span><h2 id="mission-title"></h2></div><div class="stats"><span id="stars"></span><span id="timer"></span></div></div>
+    <p id="mission-hud" class="muted"></p>
+    <progress id="progress" max="10" value="0" aria-label="Framsteg"></progress>
+    <div id="arena" class="arena"><div class="orbit" id="orbit" aria-hidden="true"></div><h3 tabindex="-1" class="equation" id="equation"></h3></div>
+    <div class="answers" id="answers"></div>
+    <form class="answer-form" id="answer-form" novalidate hidden>
+      <input id="number-answer" type="text" inputmode="numeric" autocomplete="off" maxlength="3" aria-label="Ditt svar">
+      <button class="primary" data-copy="fire">Skicka svar</button>
+    </form>
+    <p id="feedback" role="status"></p>
+    <div class="game-actions"><button class="outline" id="quit" type="button" data-copy="quit">Avsluta omgången</button><button class="primary" id="next" type="button" hidden>Nästa fråga →</button></div>
+  </section>
+
+  <section class="panel result" id="result" aria-labelledby="result-title" hidden>
+    <div id="reward" class="reward" aria-hidden="true"></div>
+    <h2 id="result-title" tabindex="-1"></h2>
+    <p id="summary"></p>
+    <p id="result-note" class="muted"></p>
+    <p id="save-status" class="muted" role="status"></p>
+    <div class="game-actions"><button class="outline" id="back" type="button" data-copy="back">Till stjärnkartan</button><button class="primary" id="retry" type="button"></button></div>
+  </section>
+
+  <section class="panel records" id="records" aria-labelledby="records-title">
+    <div class="row"><h2 id="records-title" tabindex="-1" data-copy="records">Övningshistorik</h2><button class="outline" id="export" type="button" data-copy="export" hidden>Exportera CSV</button></div>
+    <p id="storage-note" class="muted" data-copy="storage">Historiken sparas i den här webbläsaren. Du kan exportera en kopia.</p>
+    <p id="empty" class="muted" data-copy="empty">När du har spelat en omgång visas resultatet här.</p>
+    <div class="table-wrap" id="table-wrap" hidden>
+      <table><thead><tr><th scope="col" data-copy="name">Smeknamn</th><th scope="col" data-copy="time">Tid</th><th scope="col" data-copy="score">Rätt svar</th><th scope="col" data-copy="scope">Tabell</th><th scope="col" data-copy="outcome">Resultat</th><th scope="col" data-copy="finished">Slutförd</th></tr></thead><tbody id="history"></tbody></table>
+    </div>
+  </section>
+</main>
+</div>
+</body>
+</html>
