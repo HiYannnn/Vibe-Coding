@@ -49,14 +49,17 @@ function render() {
     rows.append(row);
   }
 }
-async function load() {
+async function load(background = false) {
+  if (background && request) return;
   request?.abort();
   const current=new AbortController();
   request=current;
-  state='rankLoading';
-  render();
+  if (!background) {
+    state='rankLoading';
+    render();
+  }
   try {
-    const response=await fetch('/api/leaderboard',{signal:current.signal});
+    const response=await fetch('/api/leaderboard',{signal:current.signal, cache:'no-store'});
     if(!response.ok) throw new Error('Unavailable');
     const result=await response.json();
     players=result.players;
@@ -64,6 +67,8 @@ async function load() {
   } catch {
     if(current.signal.aborted) return;
     state='rankError';
+  } finally {
+    if (request === current) request = undefined;
   }
   render();
 }
@@ -72,5 +77,13 @@ picker.addEventListener('change',()=>{
   try {localStorage.setItem(languageKey,language);} catch { /* Keep this choice in memory. */ }
   render();
 });
-get('rank-refresh').addEventListener('click',load);
+get('rank-refresh').addEventListener('click',()=>load());
+document.addEventListener('visibilitychange',()=>{
+  if (!document.hidden) void load(true);
+});
+window.addEventListener('online',()=>load(true));
+window.addEventListener('pageshow',()=>load(true));
+setInterval(()=>{
+  if (!document.hidden) void load(true);
+},30000);
 void load();
