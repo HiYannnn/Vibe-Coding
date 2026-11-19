@@ -5,6 +5,7 @@ const languageKey='kalana-multiplication-language-v1';
 const modes=['kitchen','energy','scales'];
 const icons=['🍕','⚡','⚖️'];
 const denominators={basic:[2,3,4],advanced:[4,6,8,10,12]};
+const kitchenFoods=['pizza','orange','cheesecake','cookie','waffle','kiwi','watermelon','pancake','applepie','quiche'];
 let language='sv',copy,round,ticker;
 let records=[];
 try {
@@ -19,7 +20,19 @@ const compare=(a,b)=>a.n*b.d===b.n*a.d?'=':a.n*b.d<b.n*a.d?'<':'>';
 
 function questions(mode,level) {
  const pool=[];
- for(const d of denominators[level])for(let n=1;n<d;n++)pool.push({n,d});
+ const parts=mode==='kitchen'&&level==='basic'?[2,3,4,5,6]:denominators[level];
+ for(const d of parts)for(let n=1;n<d;n++)pool.push({n,d});
+ if(mode==='kitchen') {
+  const shuffled=pool.slice();
+  for(let i=shuffled.length-1;i>0;i--){const j=random(i+1);[shuffled[i],shuffled[j]]=[shuffled[j],shuffled[i]];}
+  const unique=[];
+  for(const q of shuffled){
+   if(!unique.some(previous=>previous.n*q.d===q.n*previous.d))unique.push(q);
+  }
+  const foods=kitchenFoods.slice();
+  for(let i=foods.length-1;i>0;i--){const j=random(i+1);[foods[i],foods[j]]=[foods[j],foods[i]];}
+  return unique.slice(0,10).map((q,index)=>({...q,food:foods[index]}));
+ }
  if(mode!=='scales') {
   const result=[];
   while(result.length<10){
@@ -142,9 +155,22 @@ function renderQuestionVisual() {
  const q=round.questions[round.index],visual=get('frac-visual');visual.replaceChildren();
  if(round.mode==='kitchen'){
   get('frac-prompt').textContent=copy.fracRead;
-  const plate=make('div','fraction-food');
-  plate.append(make('span','fraction-food-icon','🍫'),diagram(q));
-  plate.firstChild.setAttribute('aria-hidden','true');visual.append(plate);
+  const foodIndex=kitchenFoods.indexOf(q.food);
+  const plate=make('figure','kitchen-plate');
+  const disc=make('div','kitchen-disc');
+  disc.style.setProperty('--fraction-angle',(360*q.n/q.d)+'deg');
+  disc.style.setProperty('--slice-angle',(360/q.d)+'deg');
+  disc.setAttribute('role','img');
+  disc.setAttribute('aria-label',copy.fracFoods[foodIndex]+'. '+copy.fracImage(q.n,q.d));
+  const photo=make('div','kitchen-photo');
+  photo.style.backgroundPosition=(foodIndex%5*25)+'% '+(Math.floor(foodIndex/5)*100)+'%';
+  const shading=make('div','kitchen-shading');
+  const lines=make('div','kitchen-slices');
+  for(const layer of [photo,shading,lines])layer.setAttribute('aria-hidden','true');
+  disc.append(photo,shading,lines);
+  plate.append(disc,make('figcaption','kitchen-caption',copy.fracFoods[foodIndex]),
+    make('p','muted',copy.fracFoodHelp));
+  visual.append(plate);
  }else if(round.mode==='energy'){
   get('frac-prompt').textContent=copy.fracPaint(fractionText(q));
   visual.append(diagram(q,true));

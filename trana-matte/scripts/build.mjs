@@ -11,7 +11,7 @@ for (const filename of ['game.js','crossword.js','portal.js','cloud.js','transla
   await transform(await readFile(filename,'utf8'), { loader:'js' });
 }
 const assets = [...htmlFiles, 'style.css', 'starflight.jpg', 'game.js',
-  'crossword.js', 'portal.js', 'cloud.js', 'translations.js', 'leaderboard.js', 'addition.js', 'division.js', 'fractions.js'];
+  'crossword.js', 'portal.js', 'cloud.js', 'translations.js', 'leaderboard.js', 'addition.js', 'division.js', 'fractions.js', 'kitchen-foods.jpg'];
 await mkdir('public', { recursive:true });
 for (const filename of assets) await copyFile(filename, 'public/' + filename);
 console.log('Build passed: 8 pages, assets, game scripts and database API.');

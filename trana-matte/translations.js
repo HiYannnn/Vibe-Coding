@@ -393,9 +393,11 @@ const divisionCopy = {
 
 const fractionCopy = {
  sv:{
+  fracFoods:['Pizza','Apelsin','Blåbärscheesecake','Chokladkaka','Våffla','Kiwi','Vattenmelon','Pannkaka','Äppelpaj','Grönsakspaj'],
+  fracFoodHelp:'Skriv bråket för den ljusa delen. Varje bit är lika stor.',
   fracSubject:'Bråk',fracTitle:'Rymdens bråkverkstad',fracIntro:'Laga rymdmat, ladda energipaneler och balansera planeter.',
   fracChoose:'Välj ditt uppdrag',fracBasic:'Grund',fracAdvanced:'Utmaning',
-  fracBasicInfo:'Halvor, tredjedelar och fjärdedelar. Jämför bråk med samma nämnare.',
+  fracBasicInfo:'Rymdköket: 2–6 lika delar. Övriga uppdrag: halvor, tredjedelar och fjärdedelar.',
   fracAdvancedInfo:'Fjärdedelar, sjättedelar, åttondelar, tiondelar och tolftedelar. Jämför olika nämnare och likvärdiga bråk.',
   fracNames:['Rymdköket','Energipanelen','Stjärnvågen'],
   fracDescriptions:['Vilken del av rymdmaten är färgad? Skriv bråket.','Tryck på lika stora delar och färglägg det angivna bråket.','Jämför två bråk. Välj mindre än, lika med eller större än.'],
@@ -411,9 +413,11 @@ const fractionCopy = {
   fracLess:'Mindre än',fracEqual:'Lika med',fracGreater:'Större än'
  },
  en:{
+  fracFoods:['Pizza','Orange','Blueberry cheesecake','Chocolate-chip cookie','Waffle','Kiwi','Watermelon','Pancake','Apple pie','Vegetable quiche'],
+  fracFoodHelp:'Write the fraction for the bright portion. Every slice has equal area.',
   fracSubject:'Fractions',fracTitle:'Space Fraction Workshop',fracIntro:'Prepare space food, power energy panels and balance planets.',
   fracChoose:'Choose your mission',fracBasic:'Basics',fracAdvanced:'Challenge',
-  fracBasicInfo:'Halves, thirds and quarters. Compare fractions with the same denominator.',
+  fracBasicInfo:'Space Kitchen: 2–6 equal parts. Other missions: halves, thirds and quarters.',
   fracAdvancedInfo:'Quarters, sixths, eighths, tenths and twelfths. Compare different denominators and equivalent fractions.',
   fracNames:['Space Kitchen','Energy Panel','Star Scales'],
   fracDescriptions:['What fraction of the space food is coloured? Write the fraction.','Tap equal parts to colour the requested fraction.','Compare two fractions. Choose less than, equal to or greater than.'],
@@ -429,9 +433,11 @@ const fractionCopy = {
   fracLess:'Less than',fracEqual:'Equal to',fracGreater:'Greater than'
  },
  'zh-CN':{
+  fracFoods:['披萨','橙子','蓝莓芝士蛋糕','巧克力曲奇','华夫饼','猕猴桃','西瓜','松饼','苹果派','蔬菜咸派'],
+  fracFoodHelp:'请写出明亮部分占整个食物的分数，每一块大小相等。',
   fracSubject:'分数',fracTitle:'太空分数工坊',fracIntro:'制作太空美食，修复能源板，用分数平衡星球。',
   fracChoose:'选择你的任务',fracBasic:'基础',fracAdvanced:'进阶',
-  fracBasicInfo:'认识二分、三分、四分，比较同分母分数。',
+  fracBasicInfo:'太空厨房练习二分至六分；其他任务练习二分、三分和四分。',
   fracAdvancedInfo:'认识四分、六分、八分、十分、十二分，比较不同分母和等值分数。',
   fracNames:['太空厨房','修复能源板','星际天平'],
   fracDescriptions:['看图判断食物的涂色部分占几分之几，输入分数。','点击大小相等的格子，涂出指定的分数。','比较两个分数，选择小于、等于或大于。'],
