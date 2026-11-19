@@ -191,3 +191,22 @@ button.fraction-piece:disabled{cursor:default}
 .kitchen-slices{position:absolute;inset:0;background:repeating-conic-gradient(from -0.7deg,#102033 0deg 1.4deg,transparent 1.4deg var(--slice-angle))}
 .kitchen-caption{font-size:20px;font-weight:850;color:var(--gold)}
 .kitchen-plate .muted{max-width:30em;margin:0}
+
+.energy-board{width:min(100%,340px);display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:8px;padding:14px;background:#172d40;border:1px solid #526c82;border-radius:20px}
+.energy-piece{height:70px;min-width:0;padding:0;border:2px solid #a8d4ce;background:#25495a;cursor:pointer;touch-action:manipulation}
+.energy-piece.painted{background:repeating-linear-gradient(135deg,#ffdc83 0 8px,#efc464 8px 11px);border-color:#ffe7a7}
+.energy-piece:focus-visible{outline:3px solid white;outline-offset:3px;filter:brightness(1.25)}
+.energy-piece:disabled{cursor:default}
+.energy-hexagon{grid-template-columns:repeat(3,minmax(0,1fr))}
+.energy-hexagon .energy-piece{height:84px;clip-path:polygon(25% 0,75% 0,100% 50%,75% 100%,25% 100%,0 50%);border:0}
+.energy-triangle{grid-template-columns:repeat(3,minmax(0,1fr))}
+.energy-triangle .energy-piece{height:84px;clip-path:polygon(50% 0,100% 100%,0 100%);border:0}
+.energy-bar{grid-template-columns:repeat(2,minmax(0,1fr))}
+.energy-bar .energy-piece{height:44px;border-radius:10px}
+.energy-diamond{grid-template-columns:repeat(3,minmax(0,1fr));gap:7px}
+.energy-diamond .energy-piece{height:84px;clip-path:polygon(50% 0,100% 50%,50% 100%,0 50%);border:0}
+.energy-wheel{position:relative;width:clamp(230px,55vw,310px);aspect-ratio:1;display:block;padding:0;border:3px solid #a8d4ce;border-radius:50%;overflow:hidden}
+.energy-wheel .energy-piece{position:absolute;inset:0;width:100%;height:100%;border:0;border-radius:0}
+.energy-wheel-lines{position:absolute;inset:0;pointer-events:none;background:repeating-conic-gradient(from -.7deg,#bad5ce 0deg 1.4deg,transparent 1.4deg calc(360deg / var(--energy-slices)))}
+.energy-shape-name{font-weight:800;color:var(--mint);margin-top:12px}
+@media(max-width:420px){.energy-board:not(.energy-wheel){padding:10px;gap:6px}.energy-piece{height:62px}.energy-bar .energy-piece{height:44px}.energy-hexagon .energy-piece,.energy-triangle .energy-piece,.energy-diamond .energy-piece{height:76px}}

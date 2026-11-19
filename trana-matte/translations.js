@@ -393,12 +393,13 @@ const divisionCopy = {
 
 const fractionCopy = {
  sv:{
+  fracShapeNames:['Reaktorhjul','Bikakeceller','Triangelnät','Energistavar','Kristaller'],
   fracFoods:['Pizza','Apelsin','Blåbärscheesecake','Chokladkaka','Våffla','Kiwi','Vattenmelon','Pannkaka','Äppelpaj','Grönsakspaj'],
   fracFoodHelp:'Skriv bråket för den ljusa delen. Varje bit är lika stor.',
   fracSubject:'Bråk',fracTitle:'Rymdens bråkverkstad',fracIntro:'Laga rymdmat, ladda energipaneler och balansera planeter.',
   fracChoose:'Välj ditt uppdrag',fracBasic:'Grund',fracAdvanced:'Utmaning',
-  fracBasicInfo:'Rymdköket: 2–6 lika delar. Övriga uppdrag: halvor, tredjedelar och fjärdedelar.',
-  fracAdvancedInfo:'Fjärdedelar, sjättedelar, åttondelar, tiondelar och tolftedelar. Jämför olika nämnare och likvärdiga bråk.',
+  fracBasicInfo:'Kök och energipaneler: 2–6 lika delar. Stjärnvågen: halvor, tredjedelar och fjärdedelar.',
+  fracAdvancedInfo:'Köket: 2–12 delar. Energipaneler: 5–12 delar med svårare bråk. Vågen: olika nämnare och likvärdiga bråk.',
   fracNames:['Rymdköket','Energipanelen','Stjärnvågen'],
   fracDescriptions:['Vilken del av rymdmaten är färgad? Skriv bråket.','Tryck på lika stora delar och färglägg det angivna bråket.','Jämför två bråk. Välj mindre än, lika med eller större än.'],
   fracRules:'10 frågor utan tidsgräns. Minst 8 rätt ger en medalj. 1 poäng per rätt svar, plus 10 första gången du klarar varje uppdrag på varje nivå.',
@@ -413,12 +414,13 @@ const fractionCopy = {
   fracLess:'Mindre än',fracEqual:'Lika med',fracGreater:'Större än'
  },
  en:{
+  fracShapeNames:['Reactor wheel','Honeycomb cells','Triangle array','Energy bars','Crystals'],
   fracFoods:['Pizza','Orange','Blueberry cheesecake','Chocolate-chip cookie','Waffle','Kiwi','Watermelon','Pancake','Apple pie','Vegetable quiche'],
   fracFoodHelp:'Write the fraction for the bright portion. Every slice has equal area.',
   fracSubject:'Fractions',fracTitle:'Space Fraction Workshop',fracIntro:'Prepare space food, power energy panels and balance planets.',
   fracChoose:'Choose your mission',fracBasic:'Basics',fracAdvanced:'Challenge',
-  fracBasicInfo:'Space Kitchen: 2–6 equal parts. Other missions: halves, thirds and quarters.',
-  fracAdvancedInfo:'Quarters, sixths, eighths, tenths and twelfths. Compare different denominators and equivalent fractions.',
+  fracBasicInfo:'Kitchen and energy panels: 2–6 equal parts. Star Scales: halves, thirds and quarters.',
+  fracAdvancedInfo:'Kitchen: 2–12 parts. Energy panels: 5–12 parts with harder fractions. Scales: different denominators and equivalent fractions.',
   fracNames:['Space Kitchen','Energy Panel','Star Scales'],
   fracDescriptions:['What fraction of the space food is coloured? Write the fraction.','Tap equal parts to colour the requested fraction.','Compare two fractions. Choose less than, equal to or greater than.'],
   fracRules:'10 questions without a time limit. At least 8 correct earns a medal. 1 point per correct answer, plus 10 for the first clear of each mission at each level.',
@@ -433,12 +435,13 @@ const fractionCopy = {
   fracLess:'Less than',fracEqual:'Equal to',fracGreater:'Greater than'
  },
  'zh-CN':{
+  fracShapeNames:['反应堆转盘','蜂巢电池','三角阵列','能量长条','水晶阵列'],
   fracFoods:['披萨','橙子','蓝莓芝士蛋糕','巧克力曲奇','华夫饼','猕猴桃','西瓜','松饼','苹果派','蔬菜咸派'],
   fracFoodHelp:'请写出明亮部分占整个食物的分数，每一块大小相等。',
   fracSubject:'分数',fracTitle:'太空分数工坊',fracIntro:'制作太空美食，修复能源板，用分数平衡星球。',
   fracChoose:'选择你的任务',fracBasic:'基础',fracAdvanced:'进阶',
-  fracBasicInfo:'太空厨房练习二分至六分；其他任务练习二分、三分和四分。',
-  fracAdvancedInfo:'认识四分、六分、八分、十分、十二分，比较不同分母和等值分数。',
+  fracBasicInfo:'厨房和能源板练习 2–6 等分，星际天平练习二分、三分和四分。',
+  fracAdvancedInfo:'厨房练习 2–12 等分；能源板练习 5–12 等分的较难分数；天平比较不同分母和等值分数。',
   fracNames:['太空厨房','修复能源板','星际天平'],
   fracDescriptions:['看图判断食物的涂色部分占几分之几，输入分数。','点击大小相等的格子，涂出指定的分数。','比较两个分数，选择小于、等于或大于。'],
   fracRules:'每轮 10 题，无时间限制，至少对 8 题获得勋章。每题答对得 1 积分，每种玩法每个难度首次通关额外得 10 分。',

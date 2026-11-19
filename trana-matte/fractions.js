@@ -5,6 +5,7 @@ const languageKey='kalana-multiplication-language-v1';
 const modes=['kitchen','energy','scales'];
 const icons=['🍕','⚡','⚖️'];
 const denominators={basic:[2,3,4],advanced:[4,6,8,10,12]};
+const energyShapes=['wheel','hexagon','triangle','bar','diamond'];
 const kitchenFoods=['pizza','orange','cheesecake','cookie','waffle','kiwi','watermelon','pancake','applepie','quiche'];
 let language='sv',copy,round,ticker;
 let records=[];
@@ -20,7 +21,9 @@ const compare=(a,b)=>a.n*b.d===b.n*a.d?'=':a.n*b.d<b.n*a.d?'<':'>';
 
 function questions(mode,level) {
  const pool=[];
- const parts=mode==='kitchen'&&level==='basic'?[2,3,4,5,6]:denominators[level];
+ const parts=mode==='kitchen'
+  ?(level==='basic'?[2,3,4,5,6]:[2,3,4,5,6,7,8,9,10,11,12])
+  :mode==='energy'?(level==='basic'?[2,3,4,5,6]:[5,6,7,8,9,10,11,12]):denominators[level];
  for(const d of parts)for(let n=1;n<d;n++)pool.push({n,d});
  if(mode==='kitchen') {
   const shuffled=pool.slice();
@@ -33,14 +36,29 @@ function questions(mode,level) {
   for(let i=foods.length-1;i>0;i--){const j=random(i+1);[foods[i],foods[j]]=[foods[j],foods[i]];}
   return unique.slice(0,10).map((q,index)=>({...q,food:foods[index]}));
  }
- if(mode!=='scales') {
-  const result=[];
-  while(result.length<10){
-   const cycle=pool.slice();
-   for(let i=cycle.length-1;i>0;i--){const j=random(i+1);[cycle[i],cycle[j]]=[cycle[j],cycle[i]];}
-   result.push(...cycle.slice(0,10-result.length).map(q=>({...q})));
+ if(mode==='energy') {
+  let result=[];
+  if(level==='advanced'){
+   // Cover all eight denominators, then give two extra larger partitions.
+   const sequence=[5,6,7,8,9,10,11,12,11,12];
+   for(const d of sequence){
+    const choices=pool.filter(q=>q.d===d&&q.n>=2&&q.n<=d-2
+     &&q.n*2!==d&&q.n*3!==d&&q.n*4!==d
+     &&!result.some(previous=>previous.n*q.d===q.n*previous.d));
+    result.push({...choices[random(choices.length)]});
+   }
+  }else{
+   const shuffled=pool.slice();
+   for(let i=shuffled.length-1;i>0;i--){const j=random(i+1);[shuffled[i],shuffled[j]]=[shuffled[j],shuffled[i]];}
+   for(const q of shuffled){
+    if(!result.some(previous=>previous.n*q.d===q.n*previous.d))result.push({...q});
+   }
+   result=result.slice(0,10);
   }
-  return result;
+  for(let i=result.length-1;i>0;i--){const j=random(i+1);[result[i],result[j]]=[result[j],result[i]];}
+  const shapes=energyShapes.slice();
+  for(let i=shapes.length-1;i>0;i--){const j=random(i+1);[shapes[i],shapes[j]]=[shapes[j],shapes[i]];}
+  return result.map((q,index)=>({...q,shape:shapes[index%shapes.length]}));
  }
  const candidates={'<':[],'=':[],'>':[]};
  for(const a of pool)for(const b of pool){
@@ -151,6 +169,41 @@ function diagram(q,interactive=false) {
  wrapper.append(grid);
  return wrapper;
 }
+function energyBoard(q) {
+ const board=make('div','energy-board energy-'+q.shape);
+ board.style.setProperty('--energy-slices',q.d);
+ for(let i=0;i<q.d;i++){
+  const piece=make('button','energy-piece');
+  piece.type='button';
+  piece.setAttribute('aria-label',copy.fracPiece(i+1,q.d));
+  piece.setAttribute('aria-pressed',String(round.selected.has(i)));
+  piece.classList.toggle('painted',round.selected.has(i));
+  piece.disabled=round.answered;
+  if(q.shape==='wheel'){
+   const points=['50% 50%'];
+   for(let step=0;step<=18;step++){
+    const angle=((i+step/18)*2*Math.PI/q.d)-Math.PI/2;
+    points.push((50+50*Math.cos(angle)).toFixed(5)+'% '+(50+50*Math.sin(angle)).toFixed(5)+'%');
+   }
+   piece.style.clipPath='polygon('+points.join(',')+')';
+  }
+  piece.addEventListener('click',()=>{
+   if(round.answered)return;
+   if(round.selected.has(i))round.selected.delete(i);else round.selected.add(i);
+   piece.classList.toggle('painted',round.selected.has(i));
+   piece.setAttribute('aria-pressed',String(round.selected.has(i)));
+   get('frac-selection').textContent=copy.fracSelected(round.selected.size,q.d);
+  });
+  board.append(piece);
+ }
+ if(q.shape==='wheel'){
+  const lines=make('span','energy-wheel-lines');
+  lines.setAttribute('aria-hidden','true');
+  board.append(lines);
+ }
+ return board;
+}
+
 function renderQuestionVisual() {
  const q=round.questions[round.index],visual=get('frac-visual');visual.replaceChildren();
  if(round.mode==='kitchen'){
@@ -173,7 +226,9 @@ function renderQuestionVisual() {
   visual.append(plate);
  }else if(round.mode==='energy'){
   get('frac-prompt').textContent=copy.fracPaint(fractionText(q));
-  visual.append(diagram(q,true));
+  visual.append(energyBoard(q));
+  const shapeName=make('p','energy-shape-name',copy.fracShapeNames[energyShapes.indexOf(q.shape)]);
+  visual.append(shapeName);
   const selected=make('p','muted',copy.fracSelected(round.selected.size,q.d));selected.id='frac-selection';visual.append(selected);
  }else{
   get('frac-prompt').textContent=copy.fracCompare;
