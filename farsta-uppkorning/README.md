@@ -36,13 +36,25 @@ You can use local route storage without setting up a database. Saved routes stay
 
 For the shared route library:
 
-1. Create a Supabase project.
-2. Run `supabase/schema.sql` in its SQL editor.
-3. Copy `.env.example` to `.env.local` and fill in `NEXT_PUBLIC_SUPABASE_URL` and `SUPABASE_ANON_KEY`.
+1. Create or link a Neon project. This app is configured for `farsta-driving`.
+2. Use `neon deploy` to pull the branch's connection settings into `.env.local`.
+3. Run `npm run db:migrate` to create the route library using the migration in `migrations/`.
+
+Use Node.js 22 for local development. The server reads `DATABASE_URL` for queries
+and `DATABASE_URL_UNPOOLED` for schema migrations. Credentials stay on the server.
+The browser uses the existing `/api/routes` endpoint.
+
+To deploy the shared library on Vercel, set `DATABASE_URL` in the Farsta project's
+Production environment variables and deploy with Root Directory
+`farsta-uppkorning` and the Next.js framework preset.
+
+The original Supabase schema is retained in `supabase/schema.sql` as a reference
+for any future data import. Existing Supabase routes need a separate data export
+and import into Neon.
 
 For the speed-limit overlay, also add `TRAFIKVERKET_API_KEY`. The NVDB website link works without a key.
 
-Keep `.env.local` out of Git. Publishing a route shares its start and end too, so avoid sharing a route that starts at your home. Public routes currently have no owner accounts; moderation is done through Supabase.
+Keep `.env.local` out of Git. Publishing a route shares its start and end too, so avoid sharing a route that starts at your home. Public routes currently have no owner accounts; moderation is done through the Neon database console.
 
 ## A small project
 
